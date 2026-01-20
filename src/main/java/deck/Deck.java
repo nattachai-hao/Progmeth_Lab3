@@ -53,10 +53,10 @@ public class Deck {
         //Must return card that was removed
         Card[] newDeck = Arrays.copyOf(deckList, deckList.length + 1);
         Card removeCard = newDeck[slotNumber];
-        for(int i = slotNumber; i < newDeck.length - 1; i++) {
-            newDeck[i] = newDeck[i+1];
+        for (int i = slotNumber; i < newDeck.length - 1; i++) {
+            newDeck[i] = newDeck[i + 1];
         }
-        Card[] finalDeck = Arrays.copyOf(newDeck,newDeck.length - 1);
+        Card[] finalDeck = Arrays.copyOf(newDeck, newDeck.length - 1);
         setDeckList(finalDeck);
         setDeckSize(finalDeck.length);
         return removeCard;
