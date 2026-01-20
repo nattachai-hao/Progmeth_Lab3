@@ -7,20 +7,36 @@ import card.base.Card;
 
 
 public class Deck {
+	protected String name;
+	protected int deckSize;
+	protected Card[] deckList;
 	// TODO: constructor
 	
 	public Deck(String name, Card[] deckList) {
+		setName(name);
+		setDeckList(deckList);
+		setDeckSize(deckList.length);
 	}
 
 	//You CAN modify the first line
 		public int insertCard(Card card) throws InsertCardFailedException{
 			int count = 0;
+			//หาการ์ดซ้ำ
+			for(Card e : deckList) {
+				if(e.equals(card)) {
+					count++;
+				}
+			}
 			if(count >= 4) 
 				throw new InsertCardFailedException("You can only put 4 of the same cards into the deck");
 			//FILL CODE HERE
 			//You can use Arrays.copyOf(Original Array, New Length) to create new arrays with bigger size
 			//Must return new deckSize
-
+			Card[] newDeck = Arrays.copyOf(deckList,deckList.length+1);
+			newDeck[newDeck.length-1] = card;
+			setDeckSize(newDeck.length);
+			setDeckList(newDeck);
+			return getDeckSize();
 		}
 
 		//You CAN modify the first line
@@ -47,4 +63,27 @@ public class Deck {
 
 	/* GETTERS & SETTERS */
 
+	public String getName() {
+		return name;
+	}
+
+	public int getDeckSize() {
+		return deckSize;
+	}
+
+	public Card[] getDeckList() {
+		return deckList;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDeckSize(int deckSize) {
+		this.deckSize = deckSize;
+	}
+
+	public void setDeckList(Card[] deckList) {
+		this.deckList = deckList;
+	}
 }
