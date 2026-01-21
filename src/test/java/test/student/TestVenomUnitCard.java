@@ -63,4 +63,14 @@ public class TestVenomUnitCard {
 	
 	//Fill Code Here!!!
 	// 1.testAttack (Must test with all 3 venomUnit on oppoUnit1 with higher than 0 health, you can use .setHealth(int))
+	@Test
+	void testAttack() {
+		int damage = venomUnit1.attackUnit(oppoUnit1);
+		assertEquals(100,damage);
+		assertEquals(0,oppoUnit1.getHealth());
+
+		int damage2 = venomUnit2.attackUnit(oppoUnit1);
+		assertEquals(0,damage2);
+		assertEquals(0,oppoUnit1.getHealth());
+	}
 }
