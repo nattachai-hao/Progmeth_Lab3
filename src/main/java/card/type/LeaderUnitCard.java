@@ -27,7 +27,7 @@ public class LeaderUnitCard extends UnitCard {
 
     public void buffUnit(UnitCard[] alliesCard) {
         for (int i = 0; i < alliesCard.length; i++) {
-            if (alliesCard[i].equals(null)) continue;
+            if (alliesCard[i] == null) continue;
             alliesCard[i].setPower(alliesCard[i].getPower() + getBuffPower());
             alliesCard[i].setHealth(alliesCard[i].getHealth() + getBuffHealth());
         }
