@@ -10,7 +10,11 @@ public abstract class Card implements Cloneable {
     public Card(String name, String flavorText, int bloodCost) {
         this.name = name;
         this.flavorText = flavorText;
-        this.bloodCost = bloodCost;
+        if(bloodCost < 0) {
+            this.bloodCost = 0;
+        }else {
+            this.bloodCost = bloodCost;
+        }
     }
 
     public abstract String toString();

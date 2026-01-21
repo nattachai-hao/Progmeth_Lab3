@@ -30,6 +30,10 @@ public class DebuffUnitCard extends UnitCard {
     }
 
     public void setDebuffPower(int debuffPower) {
-        this.debuffPower = debuffPower;
+        if(debuffPower < 0) {
+            this.debuffPower = 0;
+        }else {
+            this.debuffPower = debuffPower;
+        }
     }
 }

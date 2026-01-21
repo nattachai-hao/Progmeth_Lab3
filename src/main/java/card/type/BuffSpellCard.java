@@ -10,6 +10,7 @@ public class BuffSpellCard extends SpellCard {
     public BuffSpellCard(String name, String flavorText, int bloodCost,
                          boolean isBurstSpeed, int powerIncrease) {
         super(name, flavorText, bloodCost, isBurstSpeed);
+        setPowerIncrease(powerIncrease);
     }
 
     public void castSpell(UnitCard unitCard) {

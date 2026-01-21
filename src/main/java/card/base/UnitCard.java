@@ -43,7 +43,7 @@ public abstract class UnitCard extends Card {
         if (health < 0) {
             this.health = 0;
         } else {
-            this.health = 0;
+            this.health = health;
         }
     }
 

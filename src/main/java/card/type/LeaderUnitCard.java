@@ -42,11 +42,19 @@ public class LeaderUnitCard extends UnitCard {
     }
 
     public void setBuffPower(int buffPower) {
-        this.buffPower = buffPower;
+        if(buffPower < 0) {
+            this.buffPower = 0;
+        }else {
+            this.buffPower = buffPower;
+        }
     }
 
     public void setBuffHealth(int buffHealth) {
-        this.buffHealth = buffHealth;
+        if(buffHealth < 0) {
+            this.buffHealth = 0;
+        }else {
+            this.buffHealth = buffHealth;
+        }
     }
 
     @Override
