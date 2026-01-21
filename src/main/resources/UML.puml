@@ -1,0 +1,444 @@
+@startuml
+class card.type.VenomUnitCard {
++ int attackUnit(UnitCard)
++ int dead(Player)
+}
+
+class application.shop.actions.forge.ForgeBuffSpellCard {
++ BuffSpellCard runForge()
++ void promptSpellSpeed()
+}
+
+class application.ShopApp {
++ Card getCardChoice(List<Card>,Runnable)
++ Card getCardChoice(Card[],Runnable)
++ Deck getDeckChoice(List<Deck>,Runnable)
+}
+
+class application.base.CLIApp {
+# PrintStream out
+# Scanner in
+# int getChoice(int,int,Runnable)
+# int getChoice(int,int,boolean,Runnable)
+# int getChoice(int,int,Runnable,Function<Integer,String>)
+# int getChoice(int,int,boolean,Runnable,Function<Integer,String>)
+~ boolean ensureSelection(int)
+~ boolean ensureSelection(int,Function<Integer,String>)
+}
+
+
+class test.student.TestLeaderUnitCard {
+~ LeaderUnitCard leaderUnit1
+~ UnitCard leaderUnit2
+~ LeaderUnitCard leaderUnit3
+~ LeaderUnitCard oppoUnit1
+~ LeaderUnitCard nUnit1
+~ LeaderUnitCard nUnit2
+~ LeaderUnitCard nUnit3
+~ UnitCard[] unitList
+~ void setUp()
+~ void testConstructor()
+~ void testConstructorNegativeValue()
+~ void testSetBuffPower()
+~ void testSetBuffHealth()
+~ void testAttack()
+~ void testBuffUnit()
+}
+
+
+abstract class card.base.SpellCard {
+# boolean isBurstSpeed
++ {abstract}void castSpell(UnitCard)
++ String toString()
++ boolean isBurstSpeed()
++ void setBurstSpeed(boolean)
+}
+
+
+class card.type.LeaderUnitCard {
+- int buffPower
+- int buffHealth
++ int attackUnit(UnitCard)
++ void buffUnit(UnitCard[])
++ int getBuffPower()
++ int getBuffHealth()
++ void setBuffPower(int)
++ void setBuffHealth(int)
++ String toString()
+}
+
+
+class application.shop.actions.ReviewDeckList {
+- Player player
+- List<Card> cards
++ void run()
+}
+
+
+abstract class card.base.Card {
+# String name
+# String flavorText
+# int bloodCost
++ {abstract}String toString()
++ String getName()
++ int getBloodCost()
++ String getFlavorText()
++ boolean equals(UnitCard)
++ Object clone()
+}
+
+
+class application.shop.actions.forge.ForgeNormalUnitCard {
++ NormalUnitCard runForge()
+}
+
+class test.student.TestVenomUnitCard {
+~ VenomUnitCard venomUnit1
+~ VenomUnitCard venomUnit2
+~ VenomUnitCard venomUnit3
+~ VenomUnitCard venomUnit4
+~ UnitCard oppoUnit1
+~ Player player
+~ void setUp()
+~ void testConstructor()
+~ void testConstructorNegativeValue()
+~ void testDead()
+~ void testAttack()
+}
+
+
+class application.shop.actions.forge.ForgeDamageSpellCard {
++ DamageSpellCard runForge()
++ void promptSpellSpeed()
+}
+
+class application.shop.actions.ChangeToPremadeDeck {
+- Player player
++ void run()
++ void prompt()
+}
+
+
+class card.type.DebuffUnitCard {
+- int debuffPower
++ int attackUnit(UnitCard)
++ int getDebuffPower()
++ void setDebuffPower(int)
+}
+
+
+class application.shop.actions.PlayTest {
+~ Player[] opponentList
+- Player player
+- Player opponent
+- UnitCard[] playerField
+- UnitCard[] enemyField
+- List<Card> playerHand
+- boolean playerWincondition
++ void run()
+~ int winConCheck()
+~ void DrawCard(int)
+~ void UseCard()
++ void prompt_ChooseOppo()
++ void prompt_ChooseHandCard()
++ void prompt_UnitCardBloodCost(int,int)
++ void prompt_SpellCardBloodCost(int,int)
++ void prompt_PlayUnitCard()
++ void prompt_SpellCard(boolean,int)
+~ {static} Deck shuffleArray(Deck)
+~ void Attack_Phase()
+~ void OpponentAttack_Phase()
+~ void printGameStatus()
+~ void printBoardStatus()
+~ String printCardNameOnBoard(boolean,int)
+~ String printCardStatOnBoard(boolean,int)
+}
+
+
+class deck.InsertCardFailedException {
+- {static} long serialVersionUID
++ String message
+}
+
+class application.shop.actions.forge.ForgeLeaderUnitCard {
++ LeaderUnitCard runForge()
+}
+
+class application.PlayerSelection {
++ Deck runDeckSelection()
++ Deck runOpponentDeckSelection()
+- void printDecks()
+}
+
+class test.student.TestDebuffUnitCard {
+~ DebuffUnitCard debuffUnit1
+~ UnitCard debuffUnit2
+~ UnitCard debuffUnit3
+~ DebuffUnitCard debuffUnit4
+~ DebuffUnitCard oppoUnit1
+~ void setUp()
+~ void testConstructor()
+~ void testConstructorNegativeValue()
+~ void testSetDebuffPower()
+~ void testAttack()
+}
+
+
+class test.student.TestDeck {
+~ Deck deck1
+~ NormalUnitCard NormalUnit1
+~ NormalUnitCard NormalUnit2
+~ BuffSpellCard BuffSpellCard1
+~ BuffSpellCard BuffSpellCard2
+~ Card[] cardList1
+~ Card[] cardList2
+~ Card[] cardList3
+~ void setUp()
+~ void testConstructor()
+~ void testInsertCard()
+~ void testInsertCardMoreThan4Card()
+~ void testRemoveCard()
+~ void testRemoveNonExsistanceCard()
+}
+
+
+class application.shop.actions.ForgeCard {
++ Card runForge()
++ void promptItemType()
+}
+
+class test.student.TestDamageSpellCard {
+~ NormalUnitCard unit
+~ SpellCard spell0
+~ DamageSpellCard spell1
+~ DamageSpellCard spell2
+~ DamageSpellCard spell3
+~ DamageSpellCard spellN
++ void setUp()
+~ void testConstructor()
+~ void testConstructorNegativeValue()
+~ void testSetDamage()
+~ void testCastSpell()
+}
+
+
+class card.type.BuffSpellCard {
+- int powerIncrease
++ void castSpell(UnitCard)
++ int getPowerIncrease()
++ void setPowerIncrease(int)
+}
+
+
+class application.shop.actions.InsertCard {
+- Player player
+- List<Card> cards
++ void run()
++ void prompt()
+}
+
+
+class test.student.TestBuffSpellCard {
+~ NormalUnitCard unit
+~ SpellCard spell0
+~ BuffSpellCard spell1
+~ BuffSpellCard spell2
+~ BuffSpellCard spell3
+~ BuffSpellCard spell4
+~ BuffSpellCard spellN
+~ void setUp()
+~ void testConstructor()
+~ void testConstructorNegativeValue()
+~ void testSetPowerIncrease()
+~ void testCastSpell()
+}
+
+
+class application.shop.actions.RemoveCard {
+- Player player
+- List<Card> cards
++ void run()
++ void prompt()
+}
+
+
+class deck.Deck {
+# String name
+# int deckSize
+# Card[] deckList
++ int insertCard(Card)
++ Card removeCard(int)
++ String toString()
++ String getName()
++ int getDeckSize()
++ Card[] getDeckList()
++ void setName(String)
++ void setDeckSize(int)
++ void setDeckList(Card[])
+}
+
+
+class card.type.DamageSpellCard {
+- int damage
++ void castSpell(UnitCard)
++ int getDamage()
++ void setDamage(int)
+}
+
+
+class test.student.TestNormalUnitCard {
+~ NormalUnitCard normalUnit1
+~ UnitCard normalUnit2
+~ NormalUnitCard normalUnit3
+~ NormalUnitCard negativeTestUnit
+~ NormalUnitCard oppoUnit1
+~ void setUp()
+~ void testConstructor()
+~ void testNonPositiveConstructor()
+~ void testAttack()
+}
+
+
+abstract class card.base.UnitCard {
+# int power
+# int health
++ {abstract}int attackUnit(UnitCard)
++ int attackPlayer(Player)
++ String toString()
++ void setPower(int)
++ void setHealth(int)
++ int getPower()
++ int getHealth()
+}
+
+
+class application.Main {
+~ {static} Scanner scanner
+- {static} void printLineSeparator()
+- {static} void printDeckList(Deck)
++ {static} void main(String[])
+}
+
+
+class application.shop.actions.forge.ForgeVenomUnitCard {
++ VenomUnitCard runForge()
+}
+
+class deck.RemoveCardFailedException {
+- {static} long serialVersionUID
++ String message
+}
+
+class player.Player {
+- String name
+- int currentDamagePoint
+- Deck deck
++ String toString()
++ String toStringShortVer()
++ String getName()
++ void takeDamage(int)
++ void resetHealth()
++ Deck getDeck()
++ void setDeck(Deck)
++ int getCurrentDamagePoint()
++ void setCurrentDamagePoint(int)
+}
+
+
+class card.type.NormalUnitCard {
++ int attackUnit(UnitCard)
+}
+
+class application.shop.actions.forge.ForgeDebuffUnitCard {
++ DebuffUnitCard runForge()
+}
+
+class deck.PremadeDeck {
+~ {static} LeaderUnitCard darius
+~ {static} LeaderUnitCard ezreal
+~ {static} LeaderUnitCard braum
+~ {static} NormalUnitCard cat
+~ {static} NormalUnitCard dog
+~ {static} NormalUnitCard bird
+~ {static} NormalUnitCard log
+~ {static} VenomUnitCard poisonFlower
+~ {static} BuffSpellCard potion
+~ {static} DamageSpellCard arrow
+~ {static} NormalUnitCard fighter
+~ {static} NormalUnitCard blackRose
+~ {static} NormalUnitCard solider
+~ {static} DebuffUnitCard iceWitch
+~ {static} DebuffUnitCard iceWolf
+~ {static} VenomUnitCard madDoc
+~ {static} BuffSpellCard hiPotion
+~ {static} BuffSpellCard fastPotion
+~ {static} DamageSpellCard superArrow
+~ {static} DamageSpellCard gun
+~ {static} NormalUnitCard minotaur
+~ {static} NormalUnitCard warrior
+~ {static} NormalUnitCard guardian
+~ {static} DebuffUnitCard iceWizard
+~ {static} DebuffUnitCard iceBear
+~ {static} VenomUnitCard experi
+~ {static} BuffSpellCard megaPotion
+~ {static} DamageSpellCard cannon
++ {static} List<Card> initialCardStock
+~ {static} Card[] defaultD
+~ {static} Card[] noxasD
+~ {static} Card[] PnZD
+~ {static} Card[] freljordD
+~ {static} Deck defaultDeck
+~ {static} Deck noxasDeck
+~ {static} Deck arcaneDeck
+~ {static} Deck freljordDeck
+~ {static} NormalUnitCard cat1
+~ {static} NormalUnitCard cat2
+~ {static} NormalUnitCard log1
+~ {static} UnitCard[] voidField
+~ {static} UnitCard[] catField
+~ {static} UnitCard[] treeField
+~ {static} UnitCard[] forestField
+~ {static} UnitCard[] noxasField
+~ {static} UnitCard[] freljordField
+~ {static} UnitCard[] arcaneField
++ {static} Deck[] premadeDecks
++ {static} UnitCard[][] premadeField
+}
+
+class application.shop.Shop {
+~ Player player
+~ List<Card> cards
++ void run()
++ void prompt()
+}
+
+
+
+
+card.base.UnitCard <|-- card.type.VenomUnitCard
+application.ShopApp <|-- application.shop.actions.forge.ForgeBuffSpellCard
+application.base.CLIApp <|-- application.ShopApp
+card.base.Card <|-- card.base.SpellCard
+card.base.UnitCard <|-- card.type.LeaderUnitCard
+application.ShopApp <|-- application.shop.actions.ReviewDeckList
+card.base.Cloneable <|.. card.base.Card
+application.ShopApp <|-- application.shop.actions.forge.ForgeNormalUnitCard
+application.ShopApp <|-- application.shop.actions.forge.ForgeDamageSpellCard
+application.ShopApp <|-- application.shop.actions.ChangeToPremadeDeck
+card.base.UnitCard <|-- card.type.DebuffUnitCard
+application.ShopApp <|-- application.shop.actions.PlayTest
+deck.Exception <|-- deck.InsertCardFailedException
+application.ShopApp <|-- application.shop.actions.forge.ForgeLeaderUnitCard
+application.ShopApp <|-- application.PlayerSelection
+application.ShopApp <|-- application.shop.actions.ForgeCard
+card.base.SpellCard <|-- card.type.BuffSpellCard
+application.ShopApp <|-- application.shop.actions.InsertCard
+application.ShopApp <|-- application.shop.actions.RemoveCard
+card.base.SpellCard <|-- card.type.DamageSpellCard
+card.base.Card <|-- card.base.UnitCard
+application.ShopApp <|-- application.shop.actions.forge.ForgeVenomUnitCard
+deck.Exception <|-- deck.RemoveCardFailedException
+card.base.UnitCard <|-- card.type.NormalUnitCard
+application.ShopApp <|-- application.shop.actions.forge.ForgeDebuffUnitCard
+application.ShopApp <|-- application.shop.Shop
+@enduml
