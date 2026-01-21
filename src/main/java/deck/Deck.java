@@ -56,7 +56,7 @@ public class Deck {
         for (int i = slotNumber; i < newDeck.length - 1; i++) {
             newDeck[i] = newDeck[i + 1];
         }
-        Card[] finalDeck = Arrays.copyOf(newDeck, newDeck.length - 1);
+        Card[] finalDeck = Arrays.copyOf(newDeck, newDeck.length - 2);
         setDeckList(finalDeck);
         setDeckSize(finalDeck.length);
         return removeCard;
