@@ -5,7 +5,7 @@ import player.Player;
 
 //You CAN modify the first line
 public class DebuffUnitCard extends UnitCard {
-    protected int debuffPower;
+    private int debuffPower;
 
     public DebuffUnitCard(String name, String flavorText, int bloodCost, int power, int health, int debuffPower) {
         super(name, flavorText, bloodCost, power, health);

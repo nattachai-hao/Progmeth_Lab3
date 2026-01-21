@@ -5,8 +5,8 @@ import player.Player;
 
 //You CAN modify the first line
 public class LeaderUnitCard extends UnitCard {
-    protected int buffPower;
-    protected int buffHealth;
+    private int buffPower;
+    private int buffHealth;
 
     public LeaderUnitCard(String name, String flavorText, int bloodCost, int power, int health, int buffPower, int buffHealth) {
         super(name, flavorText, bloodCost, power, health);
