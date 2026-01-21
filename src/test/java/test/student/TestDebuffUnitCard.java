@@ -53,7 +53,35 @@ public class TestDebuffUnitCard {
 	
 	//Fill Code Here!!!
         // 1.testSetDebuffPower
-	// 2.testAttack 
+	@Test
+	void testSetDebuffPower() {
+		debuffUnit1.setDebuffPower(-1);
+		debuffUnit4.setDebuffPower(-100);
+		assertEquals(debuffUnit1.getDebuffPower(),0);
+		assertEquals(debuffUnit4.getDebuffPower(),0);
 
+		debuffUnit1.setDebuffPower(100);
+		debuffUnit4.setDebuffPower(1000);
+		assertEquals(debuffUnit1.getDebuffPower(),100);
+		assertEquals(debuffUnit4.getDebuffPower(),1000);
+	}
+	// 2.testAttack 
+	@Test
+	void testAttack() {
+		int damage = debuffUnit1.attackUnit(oppoUnit1);
+		assertEquals(damage,2);
+		assertEquals(oppoUnit1.getHealth(),3);
+		assertEquals(oppoUnit1.getPower(),4);
+
+		damage = debuffUnit1.attackUnit(oppoUnit1);
+		assertEquals(2,damage);
+		assertEquals(1,oppoUnit1.getHealth());
+		assertEquals(3,oppoUnit1.getPower());
+
+		damage = debuffUnit1.attackUnit(oppoUnit1);
+		assertEquals(1,damage);
+		assertEquals(0,oppoUnit1.getHealth());
+		assertEquals(2,oppoUnit1.getPower());
+	}
 }
 
