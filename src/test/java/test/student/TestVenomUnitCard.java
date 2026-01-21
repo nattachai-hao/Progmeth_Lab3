@@ -69,8 +69,14 @@ public class TestVenomUnitCard {
         assertEquals(100, damage);
         assertEquals(0, oppoUnit1.getHealth());
 
+        oppoUnit1.setHealth(10);
         int damage2 = venomUnit2.attackUnit(oppoUnit1);
-        assertEquals(0, damage2);
+        assertEquals(10, damage2);
+        assertEquals(0, oppoUnit1.getHealth());
+
+        oppoUnit1.setHealth(50);
+        int damage3 = venomUnit3.attackUnit(oppoUnit1);
+        assertEquals(50, damage3);
         assertEquals(0, oppoUnit1.getHealth());
     }
 }
