@@ -12,8 +12,9 @@ public class NormalUnitCard extends UnitCard {
 
     public int attackUnit(UnitCard unitCard) {
         if (this.power > unitCard.getHealth()) {
+            int realDamage = unitCard.getHealth();
             unitCard.setHealth(0);
-            return unitCard.getHealth();
+            return realDamage;
         } else {
             unitCard.setHealth(unitCard.getHealth() - this.power);
             return this.power;

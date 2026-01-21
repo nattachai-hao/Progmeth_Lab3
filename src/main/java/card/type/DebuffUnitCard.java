@@ -14,9 +14,10 @@ public class DebuffUnitCard extends UnitCard {
 
     public int attackUnit(UnitCard unitCard) {
         if (this.power > unitCard.getHealth()) {
+            int realDamage = unitCard.getHealth();
             unitCard.setHealth(0);
             unitCard.setPower(unitCard.getPower() - getDebuffPower());
-            return unitCard.getHealth();
+            return realDamage;
         } else {
             unitCard.setHealth(unitCard.getHealth() - this.power);
             unitCard.setPower(unitCard.getPower() - getDebuffPower());
